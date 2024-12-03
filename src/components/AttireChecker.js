@@ -35,6 +35,14 @@ const InfoModal = ({ isOpen, onClose }) => {
             </ul>
           </section>
 
+          <section className="bg-yellow-50 p-4 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2">⚠️ Important Note</h3>
+            <p className="text-gray-700">
+              This tool was only trained on common business attire 
+              (suits, blazers, button-up shirts, and casual wear) and may not accurately classify traditional, cultural, or clothing that is never intended for workplace such as swimwear, pajamas etc.
+            </p>
+          </section>
+
           <section className="bg-blue-50 p-4 rounded-lg">
             <h3 className="text-lg font-semibold mb-2">📸 Tips for Best Results</h3>
             <ul className="list-disc pl-5 text-gray-700 space-y-2">

@@ -1,5 +1,38 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
-import { Camera, Upload, RefreshCw, Info, X, AlertCircle } from 'lucide-react';
+import { Camera, Upload, RefreshCw, Info, X, AlertCircle, Shield, XCircle } from 'lucide-react';
+
+const PrivacyBanner = ({ onDismiss }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+    if (onDismiss) onDismiss();
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="mb-4 bg-green-50 border border-green-200 rounded-lg shadow-md overflow-hidden">
+      <div className="flex items-start justify-between p-4 gap-4">
+        <div className="flex items-start gap-3">
+          <div className="flex-shrink-0 mt-1">
+            <Shield className="w-6 h-6 text-green-600" />
+          </div>
+          <p className="text-green-800 text-sm leading-relaxed">
+            All images are processed locally in your browser and are never uploaded or stored! Data is automatically cleared when you refresh the page.
+          </p>
+        </div>
+        <button
+          onClick={handleDismiss}
+          className="flex-shrink-0 text-green-600 hover:text-green-800 transition-colors p-1.5 rounded-full hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-500"
+          aria-label="Dismiss privacy message"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const InfoModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -316,6 +349,8 @@ const AttireChecker = () => {
             </button>
           </div>
         </div>
+
+        <PrivacyBanner />
 
         <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
         
